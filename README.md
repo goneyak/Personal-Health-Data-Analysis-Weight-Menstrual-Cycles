@@ -141,3 +141,33 @@ jupyter notebook
 This project contains personal health data.
 The included datasets are anonymized and provided for educational and research purposes only.
 Not intended for medical diagnosis or advice.
+
+---
+
+## 10. Example Results
+
+### 10.1 Long-term Weight Trend (2015–2025)
+![Weight Trend](images/weight_trend.png)  
+*Daily weight records with 30-day moving average. Notable rapid decrease in mid-2021 followed by gradual regain.*
+
+---
+
+### 10.2 Menstrual Cycle Length Over Time
+![Cycle Length Trend](images/cycle_length_trend.png)  
+*Most cycles fall between 27–31 days. Occasional long gaps indicate possible missing records or irregular cycles.*
+
+---
+
+### 10.3 Average Weight Change Around Period Start (±7 days)
+![Weight Around Period Start](images/weight_period_start.png)  
+*Average weight increases by ~0.16 kg in the 7 days before period start (p ≈ 0.02). Individual cycles (gray) show variability; average trend shown in red.*
+
+---
+
+### 10.4 Clustered Weight Change Patterns
+![Cluster Patterns](images/cluster_patterns.png)  
+*K-means clustering (K=2) reveals two common shapes of weight change relative to period start:  
+Cluster 0 → Shorter cycles (~27 days) with sharper pre-period increase.  
+Cluster 1 → Longer cycles (~31 days) with flatter or decreasing trend.*
+
+---
