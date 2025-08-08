@@ -125,14 +125,17 @@ jupyter notebook
  ```
 
 ---
+
 ## 8. Dependencies
-pandas
-numpy
-matplotlib
-seaborn
-plotly
-scikit-learn
-ruptures
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- plotly
+- scikit-learn
+- ruptures
+
+---
 
 ## 9. License
 This project contains personal health data.
