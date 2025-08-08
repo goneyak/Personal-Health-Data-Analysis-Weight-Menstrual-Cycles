@@ -1,4 +1,4 @@
-# 📊 Personal Health Data Analysis: Weight & Menstrual Cycles
+# Personal Health Data Analysis: Weight & Menstrual Cycles
 
 ## 1. Overview
 This project analyzes **personal menstrual cycle** and **daily weight tracking** data to uncover:
