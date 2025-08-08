@@ -57,3 +57,15 @@ The dataset spans from **2015 to 2025** and is self-recorded.
   - **Cluster 1**: Longer cycles (~31 days), different seasonal distribution.
 
 ## 6. Repository Structure
+├── data/
+│ ├── period.xml
+│ ├── weight.xlsx
+│ ├── period_clean.csv
+│ ├── weight_clean.csv
+│ └── merged_data.csv
+├── notebooks/
+│ ├── 01_period_analysis.ipynb
+│ ├── 02_weight_analysis.ipynb
+│ ├── 03_weight_vs_period.ipynb
+│ ├── 04_clustering_patterns.ipynb
+└── README.md
