@@ -96,7 +96,7 @@ It serves as a personal health analytics case study and a demonstration of time 
 ---
 
 ## 6. Repository Structure
-.
+ ```
 ├── data/
 │ ├── period.xml # Original menstrual cycle data
 │ ├── weight.xlsx # Original weight data
@@ -111,7 +111,7 @@ It serves as a personal health analytics case study and a demonstration of time 
 ├── requirements.txt
 └── README.md
 
-
+ ```
 
 ---
 
@@ -122,7 +122,7 @@ pip install -r requirements.txt
 
 # Start Jupyter
 jupyter notebook
-
+ ```
 
 ---
 ## 8. Dependencies
