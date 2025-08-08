@@ -57,15 +57,17 @@ The dataset spans from **2015 to 2025** and is self-recorded.
   - **Cluster 1**: Longer cycles (~31 days), different seasonal distribution.
 
 ## 6. Repository Structure
+.
 ├── data/
-│ ├── period.xml
-│ ├── weight.xlsx
-│ ├── period_clean.csv
-│ ├── weight_clean.csv
-│ └── merged_data.csv
+│   ├── period.xml              # Original menstrual cycle data
+│   ├── weight.xlsx              # Original weight data
+│   ├── period_clean.csv         # Cleaned & enriched menstrual data
+│   ├── weight_clean.csv         # Cleaned weight data
+│   └── merged_data.csv          # Combined dataset for joint analysis
 ├── notebooks/
-│ ├── 01_period_analysis.ipynb
-│ ├── 02_weight_analysis.ipynb
-│ ├── 03_weight_vs_period.ipynb
-│ ├── 04_clustering_patterns.ipynb
+│   ├── 01_period_analysis.ipynb       # Menstrual cycle analysis
+│   ├── 02_weight_analysis.ipynb       # Weight data analysis
+│   ├── 03_weight_vs_period.ipynb      # Combined event-based analysis
+│   ├── 04_clustering_patterns.ipynb   # Pattern discovery via clustering
+├── requirements.txt
 └── README.md
