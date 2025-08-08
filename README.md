@@ -21,96 +21,73 @@ It serves as a personal health analytics case study and a demonstration of time 
 ---
 
 ## 3. Goals
-1. **Understand menstrual cycle patterns**  
-   - Distribution of cycle length & duration  
-   - Seasonal/yearly trends  
-   - Missing cycle detection & imputation  
+1. **Menstrual cycle analysis**  
+   - Cycle length & duration distribution
+   - Seasonal/yearly trends
+   - Detect & impute missing cycles
+2. **Weight analysis**  
+   - Long-term trends & seasonal effects
+   - Missing data heatmaps
+3. **Combined analysis**  
+   - Weight change before/after **Period Start** & **Ovulation**
+   - Statistical significance (t-test)
+4. **Pattern discovery**  
+   - K-means clustering of normalized weight curves
+   - Cluster comparison by cycle length, season, year
 
-2. **Explore weight data**  
-   - Long-term weight trends  
-   - Missing data visualization & interpolation  
-   - Seasonal/weekday/monthly effects  
-
-3. **Link menstrual and weight data**  
-   - Weight changes before and after **Period Start** and **Ovulation**  
-   - Statistical tests for significance (t-test, ±7 days)  
-
-4. **Discover patterns with clustering**  
-   - Group similar weight change curves across cycles using K-means  
-   - Compare clusters by cycle length, season, year, and duration  
 
 ---
 
 ## 4. Analysis Workflow
 ### Step 1 — Data Cleaning
-- Parse XML & Excel into DataFrames
-- Detect missing periods (>48 days between starts)
-- Impute missing cycles using average of surrounding cycle lengths
-- Derive:
-  - `cycle_length`
-  - `duration_days`
-  - `ovulation_date`
-  - `season`, `year`
+- Parse XML & Excel → DataFrames
+- Detect missing cycles (>48 days gap)
+- Impute missing using average length
+- Derive `cycle_length`, `duration_days`, `ovulation_date`, `season`, `year`
 
-### Step 2 — Individual Analyses
-**Menstrual data**:
-- Trends over time  
-- Histograms & seasonal breakdowns  
-- Missing period detection & visualization  
+### Step 2 — Separate Analyses
+- **Menstrual data**: trends, histograms, seasonal breakdown  
+- **Weight data**: moving averages, seasonal trends, missing data heatmaps
 
-**Weight data**:
-- Moving averages for long-term trends  
-- Seasonal analysis (month, quarter, year)  
-- Heatmaps of missing vs recorded days  
-
-### Step 3 — Combined Analysis
+### Step 3 — Event-based Analysis
 - Align weight to:
-  - **Period Start**
-  - **Ovulation**
-- Calculate before vs after mean weights  
-- Apply t-test for statistical significance  
-- Visualize:
-  - Multiple cycle curves (thin gray lines)
-  - Average trend (bold red line)
-  - Vertical dashed event markers
+  - Period Start
+  - Ovulation
+- Compare before vs after (±7 days)
+- Paired t-test for significance
+- Plot individual cycles + average
 
-### Step 4 — Pattern Discovery
-- Normalize each cycle’s weight curve (z-score)
-- Use **K-means clustering** to group patterns
-- Evaluate K using silhouette score
-- Compare clusters:
-  - Cycle length
-  - Duration
-  - Season
-  - Year
+### Step 4 — Clustering
+- Z-score normalize each cycle's weight curve
+- K-means clustering
+- Choose K via silhouette score
+- Compare clusters by cycle metrics & seasonal/annual distribution
 
 ---
 
 ## 5. Key Findings
-- Slight **weight increase before period start** (p ≈ 0.02, ±7 days)
-- No statistically significant weight change around ovulation
-- Two distinct weight change pattern clusters:
-  - **Cluster 0**: Shorter cycles (~27 days), slightly longer duration  
-  - **Cluster 1**: Longer cycles (~31 days), different seasonal distribution
+- **Weight increase before period start**: +0.16 kg, p ≈ 0.02 (±7 days)
+- No significant change around ovulation
+- **Two main clusters**:
+  - **Cluster 0**: Shorter cycles (~27 days), sharper pre-period increase  
+  - **Cluster 1**: Longer cycles (~31 days), flatter/decreasing trend
 
 ---
 
 ## 6. Repository Structure
  ```
-├── data/
-│ ├── period.xml # Original menstrual cycle data
-│ ├── weight.xlsx # Original weight data
-│ ├── period_clean.csv # Cleaned & enriched menstrual data
-│ ├── weight_clean.csv # Cleaned weight data
-│ └── merged_data.csv # Combined dataset for joint analysis
-├── notebooks/
-│ ├── 01_period_analysis.ipynb # Menstrual cycle analysis
-│ ├── 02_weight_analysis.ipynb # Weight data analysis
-│ ├── 03_weight_vs_period.ipynb # Combined event-based analysis
-│ ├── 04_clustering_patterns.ipynb # Pattern discovery via clustering
-├── requirements.txt
-└── README.md
-
+data/
+├── period.xml # Original menstrual data
+├── weight.xlsx # Original weight data
+├── period_clean.csv # Cleaned menstrual data
+├── weight_clean.csv # Cleaned weight data
+notebooks/
+├── 01_period_analysis.ipynb # Menstrual cycle analysis
+├── 02_weight_analysis.ipynb # Weight analysis
+├── 03_weight_vs_period.ipynb # Event-based analysis
+├── 04_clustering_patterns.ipynb # K-means clustering
+requirements.txt
+README.md
  ```
 
 ---
@@ -142,32 +119,3 @@ This project contains personal health data.
 The included datasets are anonymized and provided for educational and research purposes only.
 Not intended for medical diagnosis or advice.
 
----
-
-## 10. Example Results
-
-### 10.1 Long-term Weight Trend (2015–2025)
-![Weight Trend](images/weight_trend.png)  
-*Daily weight records with 30-day moving average. Notable rapid decrease in mid-2021 followed by gradual regain.*
-
----
-
-### 10.2 Menstrual Cycle Length Over Time
-![Cycle Length Trend](images/cycle_length_trend.png)  
-*Most cycles fall between 27–31 days. Occasional long gaps indicate possible missing records or irregular cycles.*
-
----
-
-### 10.3 Average Weight Change Around Period Start (±7 days)
-![Weight Around Period Start](images/weight_period_start.png)  
-*Average weight increases by ~0.16 kg in the 7 days before period start (p ≈ 0.02). Individual cycles (gray) show variability; average trend shown in red.*
-
----
-
-### 10.4 Clustered Weight Change Patterns
-![Cluster Patterns](images/cluster_patterns.png)  
-*K-means clustering (K=2) reveals two common shapes of weight change relative to period start:  
-Cluster 0 → Shorter cycles (~27 days) with sharper pre-period increase.  
-Cluster 1 → Longer cycles (~31 days) with flatter or decreasing trend.*
-
----
